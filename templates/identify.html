@@ -6,5 +6,8 @@
 			<input type="file" name="file" required><br>
 			<input type="submit" value="&#x2191 Upload">
 		</form>
+		{% if upload_name %}
+		<img src="{{url_for('static', filename=upload_name)}}"/>
+		{% endif %}
 	</body>
 </html>

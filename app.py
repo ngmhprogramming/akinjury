@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, session, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
-from os import urandom
+from os import urandom, path
 from base64 import b64encode
 
 app = Flask(__name__)
 app.secret_key = "chennuodeceoofsex"
 
-UPLOAD_FOLDER = "/uploads"
+UPLOAD_FOLDER = "static/uploads"
 ALLOWED_EXTENSIONS = set(["jpg", "jpeg", "png", "gif"])
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
@@ -56,8 +56,14 @@ def message():
 
 @app.route("/identify", methods=["GET", "POST"])
 def identify():
-	upload = request.files["file"]
-	return render_template("identify.html")
+	if request.method == "GET":
+		return render_template("identify.html")
+	else:
+		upload = request.files["file"]
+		if upload.filename != "" and upload and allowed_file(upload.filename):
+			upload_name = secure_filename(upload.filename)
+			upload.save(path.join(app.config['UPLOAD_FOLDER'], upload_name))
+		return render_template("identify.html", upload_name="uploads/"+upload_name)
 
 if __name__ == "__main__":
     app.run(debug=True)
