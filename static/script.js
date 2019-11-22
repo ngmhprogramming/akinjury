@@ -27,6 +27,9 @@ function send(message){
 				bot.innerHTML = response_message;
 				bot_div.appendChild(bot);
 				document.getElementById("messages").appendChild(bot_div);
+
+				var speech = new SpeechSynthesisUtterance(response_message);
+				window.speechSynthesis.speak(speech);
 			}
 			var choice_div = document.getElementById("choices");
 			choice_div.innerHTML = "";
