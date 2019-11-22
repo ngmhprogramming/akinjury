@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from werkzeug.utils import secure_filename
 from os import urandom
-from binascii import b2a_hex
+from base64 import b64encode
 
 app = Flask(__name__)
 app.secret_key = "chennuodeceoofsex"
@@ -25,9 +25,8 @@ def index():
 def chat():
 	if request.method == "GET":
 		session_id = get_session_id()
-		if session_id is None: session["id"] = b2a_hex(urandom(64))
+		if session_id is None: session["id"] = b64encode(urandom(64)).decode('utf-8')
 		session_id = get_session_id()
-		print(session_id)
 		return render_template("chat.html")
 	else:
 		session_id = get_session_id()
@@ -37,9 +36,12 @@ def chat():
 
 @app.route("/message", methods=["POST"])
 def message():
+	session_id = get_session_id()
+	if session_id is None: return redirect(url_for("chat"))
 	text = request.form["message"]
-	print(text)
-	return ("You sent: "+text)
+	response = session_id+": "+text
+	print(response)
+	return response
 
 @app.route("/identify", methods=["GET", "POST"])
 def identify():
