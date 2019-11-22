@@ -14,9 +14,15 @@ def allowed_file(filename):
 def index():
 	return render_template("index.html")
 
-@app.route("/chat", methods=["GET", "POST"])
+@app.route("/chat")
 def chat():
 	return render_template("chat.html")
+
+@app.route("/message", methods=["POST"])
+def message():
+	text = request.form["message"]
+	print(text)
+	return ("You sent: "+text)
 
 @app.route("/identify", methods=["GET", "POST"])
 def identify():
