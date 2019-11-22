@@ -1,17 +1,14 @@
 <html>
 	{% include 'components/head.html' %}
 	<body>
-		<form method="POST"><input type="submit" value="End Chat"></form>
+		<form method="POST"><input type="submit" value="&#x2715 End Chat"></form>
 		<div id="messages">
-			<p class="message bot">Hi I am akinjury.</p>
-			<p class="message bot">Let me diagnose you.</p>
-			<p class="message user">no</p>
-			<p class="message user">i am a trollerman</p>
-			<p class="message user">ceo chennuode is never injured</p>
+			<div class="message bot"><p>Hi I am akinjury</p></div>
+			<div class="message user"><p>CEO Chen Nuode is never injured</p></div>
 		</div>
-		<form onsubmit="send(); return false;">
+		<form id="text" onsubmit="send(); return false;">
 			<input type="text" id="message" placeholder="Your Message">
-			<input type="submit" value="Send">
+			<input type="submit" value="&#x2709">
 		</form>
 	</body>
 </html>

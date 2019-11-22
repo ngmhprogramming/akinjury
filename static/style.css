@@ -1,18 +1,42 @@
 body {
 	font-family: verdana;
+	font-size: 100%;
 }
 .menu {
 	text-align: center;
 }
-.bot {
-	text-align: left;
+.message {
+	width: 99%;
+	overflow: hidden;
 }
-.user {
-	text-align: right;
+.message p {
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 10px;
+	width: fit-content;
 }
-input[type=text]{
-	width: 88%;
+.bot p {
+	float: left;
+	color: white;
+	background-color: #b80606;
 }
-input[type=submit]{
-	width: 8%;
+.user p {
+	float: right;
+	color: white;
+	background-color: #000899;
+}
+#text {
+	padding: none;
+	width: 98%;
+	height: 10%;
+}
+#text input[type=text]{
+	width: 89%;
+	height: 100%;
+	font-size: 120%;
+}
+#text input[type=submit]{
+	width: 9%;
+	height: 100%;
+	font-size: 120%;
 }

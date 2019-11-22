@@ -10,6 +10,9 @@ UPLOAD_FOLDER = "/uploads"
 ALLOWED_EXTENSIONS = set(["jpg", "jpeg", "png", "gif"])
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
+#Possibly implement chat history
+histories = {}
+
 def get_session_id():
     if "id" in session: return session["id"]
     return None
@@ -39,8 +42,7 @@ def message():
 	session_id = get_session_id()
 	if session_id is None: return redirect(url_for("chat"))
 	text = request.form["message"]
-	response = session_id+": "+text
-	print(response)
+	response = session_id[:5]+": "+text
 	return response
 
 @app.route("/identify", methods=["GET", "POST"])
