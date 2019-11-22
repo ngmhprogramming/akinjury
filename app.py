@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
 from os import urandom
 from base64 import b64encode
@@ -42,8 +42,17 @@ def message():
 	session_id = get_session_id()
 	if session_id is None: return redirect(url_for("chat"))
 	text = request.form["message"]
-	response = session_id[:5]+": "+text
-	return response
+	'''
+	Response Array
+	{
+		"messages": [],
+		"choices": []
+	}
+	'''
+	response = {}
+	response["messages"] = [session_id[:5]+": "+text, "Blank Message"]
+	response["choices"] = ["Yes", "No"]
+	return jsonify(response)
 
 @app.route("/identify", methods=["GET", "POST"])
 def identify():
