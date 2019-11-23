@@ -12,13 +12,6 @@ function send(message){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
-			/*
-			Response Array
-			{
-				"messages": [],
-				"choices": []
-			}
-			*/
 			var response = JSON.parse(this.responseText);
 			for (const response_message of response["messages"]){
 				var bot_div = document.createElement("div");

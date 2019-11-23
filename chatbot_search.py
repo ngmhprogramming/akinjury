@@ -10,13 +10,13 @@ class diagnoser():
 
 	def conclude_injury(self):
 		#print("Injury found!")
-		return str(list(self.df['Injury name']))
+		return list(self.df['Injury name'])
 
 	def ask_qn(self):
 		options = list(self.df.loc[:,self.colnames[self.counter]].unique())
 
 		if len(options) > 1: 
-			return self.colnames[self.counter], options, list(self.df['Injury name']) # returns question, list of allowed responses, and the possible injuries
+			return [self.colnames[self.counter]], options, list(self.df['Injury name']) # returns question, list of allowed responses, and the possible injuries
 			
 		else:
 			if self.counter < self.max:
