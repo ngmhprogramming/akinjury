@@ -1,4 +1,3 @@
-"""
 import csv
 
 # Split a dataset based on an attribute and an attribute value
@@ -191,15 +190,3 @@ first_row = csv_reader[0]
 tree = build_tree(csv_reader[1:], 100, 1,first_row)
 #print_tree(tree,first_row)
 print(predict(tree))
-"""
-
-
-
-
-
-
-
-
-
-
-
