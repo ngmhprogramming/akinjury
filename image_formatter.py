@@ -59,4 +59,4 @@ def main(main, subs):
             im.save(newpath)
 
 if __name__ == '__main__':
-    main('healine/', ['firstdegburn/', 'minorcut/', 'contusion/', 'snakebite/', 'nosebleed/'])
+    main('injuries/', ['firstdegburn/', 'minorcut/', 'contusion/', 'snakebite/', 'nosebleed/'])

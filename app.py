@@ -2,8 +2,9 @@ from flask import Flask, render_template, request, session, redirect, url_for, j
 from werkzeug.utils import secure_filename
 from os import urandom, path
 from base64 import b64encode
+from csv import reader	
 from chatbot_search import diagnoser
-from csv import reader
+from image_predict import predict
 
 app = Flask(__name__)
 app.secret_key = "akinjuryisveryuseful"
@@ -80,6 +81,7 @@ def message():
 @app.route("/identify", methods=["GET", "POST"])
 def identify():
 	if request.method == "GET":
+		print(predict('data/train/contusion/000002.jpg'))
 		return render_template("identify.html")
 	else:
 		upload = request.files["file"]

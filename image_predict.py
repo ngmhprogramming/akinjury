@@ -75,5 +75,3 @@ def predict(filename):
     x /= 255
     prediction = model.predict(x)
     return categories[np.argmax(prediction)], prediction.tolist()[0]
-
-print(predict('data/train/contusion/000002.jpg'))
