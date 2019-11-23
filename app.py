@@ -60,9 +60,7 @@ def message():
 	response = {}
 	done = False
 	if text != "Diagnose Me":
-		
 		done = not diagnosers[session_id].ans_qn(text)
-		
 	if not done:
 		try:
 			response["messages"], response["choices"], possible = diagnosers[session_id].ask_qn()
@@ -71,7 +69,6 @@ def message():
 				[response["messages"].append(injury) for injury in possible]
 		except:
 			done = True
-
 	if done:
 		possible = diagnosers[session_id].conclude_injury()[0]
 		number = 0

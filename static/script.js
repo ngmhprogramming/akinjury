@@ -36,9 +36,7 @@ function send(message){
 	}
 	xhttp.open("POST", "/message", true);
 	xhttp.setRequestHeader("Content-type", "text/plain");
-	//message = encodeURI(message)
 	xhttp.send(message);
-
 	setTimeout(function(){
 		$("#messages").animate({scrollTop: document.getElementById("messages").scrollHeight},"slow");
 	}, 500);
