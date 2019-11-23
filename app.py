@@ -55,11 +55,14 @@ def chat():
 def message():
 	session_id = get_session_id()
 	if session_id is None: return redirect(url_for("chat"))
-	text = request.form["message"]
+	text = request.data.decode("utf-8")
+	#text = request.form["message"]
 	response = {}
 	done = False
 	if text != "Diagnose Me":
+		
 		done = not diagnosers[session_id].ans_qn(text)
+		
 	if not done:
 		try:
 			response["messages"], response["choices"], possible = diagnosers[session_id].ask_qn()
@@ -68,6 +71,7 @@ def message():
 				[response["messages"].append(injury) for injury in possible]
 		except:
 			done = True
+
 	if done:
 		possible = diagnosers[session_id].conclude_injury()[0]
 		number = 0
