@@ -1,7 +1,7 @@
 function send(message){
 	//var message = document.getElementById("message").value;
 	//document.getElementById("message").value = "";
-
+	
 	var user_div = document.createElement("div");
 	user_div.className = "message user";
 	var user = document.createElement("p");
@@ -35,8 +35,10 @@ function send(message){
 		}
 	}
 	xhttp.open("POST", "/message", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("message="+message);
+	xhttp.setRequestHeader("Content-type", "text/plain");
+	//message = encodeURI(message)
+	xhttp.send(message);
+
 	setTimeout(function(){
 		$("#messages").animate({scrollTop: document.getElementById("messages").scrollHeight},"slow");
 	}, 500);

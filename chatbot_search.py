@@ -36,3 +36,18 @@ class diagnoser():
 			return False
 		else:
 			return True
+
+if __name__ == "__main__":
+	yay = diagnoser()
+	while yay.ask_qn() != False:
+		[qn, options, possibleinjury] = yay.ask_qn()
+		print(qn)
+		print(options)
+		print(possibleinjury)
+		myinput = input("ans ")
+		yay.ans_qn(myinput)
+
+	print(yay.conclude_injury())
+
+
+
