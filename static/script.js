@@ -46,5 +46,5 @@ function send(message){
 	xhttp.send("message="+message);
 	setTimeout(function(){
 		$("#messages").animate({scrollTop: document.getElementById("messages").scrollHeight},"slow");
-	}, 300);
+	}, 500);
 }

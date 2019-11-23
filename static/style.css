@@ -1,10 +1,10 @@
 body {
-	font-family: verdana;
+	font-family: 'Roboto', sans-serif;
 	font-size: 100%;
-	background: repeating-linear-gradient(
-	  45deg,
-	  white,
-	  white 10px,
+	background: repeating-radial-gradient(
+	  circle,
+	  #ffc7c7,
+	  #ffc7c7 10px,
 	  #f78686 10px,
 	  #f78686 20px
 	);
@@ -21,7 +21,7 @@ body {
 .message p {
 	border: 1px solid;
 	border-radius: 8px;
-	padding: 7px;
+	padding: 10px;
 	width: fit-content;
 }
 .bot p {
@@ -41,10 +41,14 @@ body {
 	max-width: 350px;
 	margin-left: auto;
 	margin-right: auto;
+	vertical-align: middle;
 	border: 8px solid;
 	border-radius: 25px;
 	padding: 7px;
 	background: white;
+}
+.menu {
+	text-align: center;
 }
 #menu {
 	width: 100%;
@@ -97,4 +101,6 @@ body {
 	margin: 1%;
 	border: 1px solid;
 	border-radius: 5px;
+	color: #b80606;
+	background-color: white;
 }
