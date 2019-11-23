@@ -5,7 +5,7 @@ from base64 import b64encode
 from chatbot_search import diagnoser
 
 app = Flask(__name__)
-app.secret_key = "chennuodeceoofsex"
+app.secret_key = "akinjuryisveryuseful"
 
 UPLOAD_FOLDER = "static/uploads"
 ALLOWED_EXTENSIONS = set(["jpg", "jpeg", "png", "gif"])
@@ -13,8 +13,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 diagnosers = {}
 
-#Possibly implement chat history
-histories = {}
+DEBUG_POSSIBLE_INJURIES = False
 
 def get_session_id():
     if "id" in session: return session["id"]
@@ -57,15 +56,14 @@ def message():
 	if not done:
 		response["messages"], response["choices"], possible = diagnosers[session_id].ask_qn()
 		if response["messages"] is False: done = True
-		#response["messages"].append(["Possible Injuries:"])
-		#[response["messages"].append(injury) for injury in possible]
+		if DEBUG_POSSIBLE_INJURIES:
+			response["messages"].append(["Possible Injuries:"])
+			[response["messages"].append(injury) for injury in possible]
 	if done:
 		possible = diagnosers[session_id].conclude_injury()
 		response["messages"] = ["Possible Injuries:"]
 		[response["messages"].append(injury) for injury in possible]
 		response["choices"] = []
-	print(response["messages"])
-	print(response["choices"])
 	return jsonify(response)
 
 @app.route("/identify", methods=["GET", "POST"])
