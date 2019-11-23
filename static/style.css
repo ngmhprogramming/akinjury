@@ -51,9 +51,10 @@ body {
 	height: fit-content;
 	border-bottom: 1px solid;
 }
-#menu h1 {
+#menu img {
 	width: 45%;
 	display: inline-block;
+	vertical-align: middle;
 	color: #b80606;
 }
 #menu form {
