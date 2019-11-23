@@ -51,7 +51,7 @@ def message():
 	'''
 	response = {}
 	response["messages"] = [session_id[:5]+": "+text, "Blank Message"]
-	response["choices"] = ["Yes", "No"]
+	response["choices"] = ["Option 1", "Option 2", "Option 3", "Option 4"]
 	return jsonify(response)
 
 @app.route("/identify", methods=["GET", "POST"])

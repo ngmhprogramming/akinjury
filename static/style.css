@@ -1,30 +1,75 @@
 body {
 	font-family: verdana;
 	font-size: 100%;
+	background: repeating-linear-gradient(
+	  45deg,
+	  white,
+	  white 10px,
+	  #f78686 10px,
+	  #f78686 20px
+	);
 }
-.menu {
-	text-align: center;
+#messages {
+	height: 62%;
+	overflow-x: hidden;
 }
 .message {
 	width: 99%;
 	overflow: hidden;
-	padding: 5px;
+	padding: 4px;
 }
 .message p {
 	border: 1px solid;
 	border-radius: 8px;
-	padding: 10px;
+	padding: 7px;
 	width: fit-content;
 }
 .bot p {
 	float: left;
 	color: white;
+	margin: 4px;
 	background-color: #b80606;
 }
 .user p {
 	float: right;
 	color: white;
+	margin: 4px;
 	background-color: #000899;
+}
+#chat {
+	min-width: 350px;
+	max-width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 8px solid;
+	border-radius: 25px;
+	padding: 7px;
+	background: white;
+}
+#menu {
+	width: 100%;
+	height: fit-content;
+	border-bottom: 1px solid;
+}
+#menu h1 {
+	width: 45%;
+	display: inline-block;
+	color: #b80606;
+}
+#menu form {
+	width: 45%;
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+#menu form input {
+	float: right;
+	vertical-align: middle;
+	font-size: 200%;
+	font-weight: bold;
+	background-color: white;
+	border: 1px solid;
+	border-radius: 5px;
 }
 #text {
 	padding: none;
@@ -42,11 +87,13 @@ body {
 	font-size: 120%;
 }
 #choices {
+
 }
 #choices button {
 	font-size: 200%;
-	width: 49%;
+	width: 47%;
 	padding: 5px;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 1%;
+	border: 1px solid;
+	border-radius: 5px;
 }

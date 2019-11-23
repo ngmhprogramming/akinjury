@@ -1,20 +1,29 @@
 <html>
 	{% include 'components/head.html' %}
 	<body>
-		<form method="POST"><input type="submit" value="&#x2715 End Chat"></form>
-		<div id="messages">
-			<div class="message bot"><p>Hi, I am akinjury.</p></div>
-			<div class="message user"><p>CEO Chen Nuode is never injured</p></div>
+		<div id="chat">
+			<div id="menu">
+				<h1>akinjury</h1>
+				<form method="POST">
+					<input type="submit" value="&#x2715">
+				</form>
+			</div>
+			<div id="messages">
+				<div class="message bot"><p>Hi, I am akinjury.</p></div>
+				<div class="message user"><p>CEO Chen Nuode is never injured</p></div>
+			</div>
+			<div id="choices">
+				<button onclick="send('Option 1')">Option 1</button>
+				<button onclick="send('Option 2')">Option 2</button>
+				<button onclick="send('Option 3')">Option 3</button>
+				<button onclick="send('Option 4')">Option 4</button>
+			</div>
+			<!--
+			<form id="text" onsubmit="send(); return false;">
+				<input type="text" id="message" placeholder="Your Message">
+				<input type="submit" value="&#x2709">
+			</form>
+			-->
 		</div>
-		<div id="choices">
-			<button onclick="send('Yes')">Yes</button>
-			<button onclick="send('No')">No</button>
-		</div>
-		<!--
-		<form id="text" onsubmit="send(); return false;">
-			<input type="text" id="message" placeholder="Your Message">
-			<input type="submit" value="&#x2709">
-		</form>
-		-->
 	</body>
 </html>

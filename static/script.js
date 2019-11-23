@@ -45,6 +45,6 @@ function send(message){
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("message="+message);
 	setTimeout(function(){
-		$('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+		$("#messages").animate({scrollTop: document.getElementById("messages").scrollHeight},"slow");
 	}, 300);
 }
