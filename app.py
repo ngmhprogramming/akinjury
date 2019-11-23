@@ -44,6 +44,10 @@ def chat():
 		session_id = get_session_id()
 		if session_id is not None:
 			session.pop("id", None)
+			del dfs[session_id]
+			del idxs[session_id]
+			del options[session_id]
+			del items[session_id]
 		return redirect(url_for("index"))
 
 @app.route("/message", methods=["POST"])
