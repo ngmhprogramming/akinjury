@@ -60,21 +60,21 @@ def message():
 	if text != "Diagnose Me":
 		done = not diagnosers[session_id].ans_qn(text)
 	if not done:
-		response["messages"], response["choices"], possible = diagnosers[session_id].ask_qn()
-		if response["messages"] is False: done = True
-		if DEBUG_POSSIBLE_INJURIES:
-			response["messages"].append(["Possible Injuries:"])
-			[response["messages"].append(injury) for injury in possible]
+		try:
+			response["messages"], response["choices"], possible = diagnosers[session_id].ask_qn()
+			if DEBUG_POSSIBLE_INJURIES:
+				response["messages"].append(["Possible Injuries:"])
+				[response["messages"].append(injury) for injury in possible]
+		except:
+			done = True
 	if done:
 		possible = diagnosers[session_id].conclude_injury()[0]
 		number = 0
 		for row in range(len(treatments)):
-			if treatments[row][0] == possible:
-				number = row
-		response["messages"] = ["Your injury is:", possible, "<a href='/information/"+str(number)+">Treatment</a>"]
-		#response["messages"] = ["Possible Injuries:"]
-		#[response["messages"].append(injury) for injury in possible]
+			if treatments[row][0] == possible: number = row
+		response["messages"] = ["Your injury is:", possible, "<a href='/information/"+str(number)+"'>Treatment Instruction</a>"]
 		response["choices"] = []
+	response["choices"].sort()
 	return jsonify(response)
 
 @app.route("/identify", methods=["GET", "POST"])
@@ -90,6 +90,13 @@ def identify():
 
 @app.route("/information/<injury>")
 def information(injury):
+	session_id = get_session_id()
+	try:
+		if session_id is not None:
+			session.pop("id", None)
+			del diagnosers[session_id]
+	except:
+		pass
 	return render_template("information.html", injury=treatments[int(injury)])
 
 if __name__ == "__main__":

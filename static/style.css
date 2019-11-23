@@ -24,6 +24,9 @@ body {
 	padding: 10px;
 	width: fit-content;
 }
+.message a {
+	color: white;
+}
 .bot p {
 	float: left;
 	color: white;
@@ -47,8 +50,19 @@ body {
 	padding: 7px;
 	background: white;
 }
-.menu {
+#home {
 	text-align: center;
+	background-color: white;
+	border: 8px solid;
+	border-radius: 25px;
+	padding: 7px;
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+}
+#home div {
+	margin: 20px;
 }
 #menu {
 	width: 100%;
@@ -72,9 +86,12 @@ body {
 	vertical-align: middle;
 	font-size: 200%;
 	font-weight: bold;
-	background-color: white;
-	border: 1px solid;
-	border-radius: 5px;
+	background-color: red;
+	color: white;
+	border: none;
+	border-radius: 50%;
+	padding: 5px;
+	text-decoration: none;
 }
 #text {
 	padding: none;
@@ -119,4 +136,19 @@ body {
 #treatment p {
 	margin: 0;
 	padding: 0;
+}
+#identify {
+	background-color: white;
+	border: 8px solid;
+	border-radius: 25px;
+	padding: 7px;
+}
+#close {
+	float: right;
+	background-color: red;
+	color: white;
+	border-radius: 50%;
+	padding: 5px;
+	text-decoration: none;
+	font-size: 200%;
 }

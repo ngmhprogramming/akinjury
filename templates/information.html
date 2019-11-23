@@ -2,6 +2,7 @@
 	{% include 'components/head.html' %}
 	<body>
 		<div id="treatment">
+			<a id="close" href="/">&#x2715</a>
 			{% if injury %}
 			<h1>Name of Injury</h1>
 			<p>{{ injury[0] }}</p>
@@ -15,11 +16,6 @@
 			<p>{{ injury[4] }}</p>
 			<h1>Specific Treatment</h1>
 			<p>{{ injury[5] }}</p>
-			{% else %}
-			<div>
-				<p>You're in the wrong place</p>
-				<a href="/">Go back</a>
-			</div>
 			{% endif %}
 		</div>
     </body>
