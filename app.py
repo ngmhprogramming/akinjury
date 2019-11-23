@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 from os import urandom, path
 from base64 import b64encode
 from chatbot_search import diagnoser
+from csv import reader
 
 app = Flask(__name__)
 app.secret_key = "akinjuryisveryuseful"
@@ -14,6 +15,11 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 diagnosers = {}
 
 DEBUG_POSSIBLE_INJURIES = False
+
+treatments = []
+with open('treatments.csv', newline='') as csvfile:
+    treatments = list(reader(csvfile))
+headers = treatments[0]
 
 def get_session_id():
     if "id" in session: return session["id"]
@@ -57,17 +63,22 @@ def message():
 		done = not diagnosers[session_id].ans_qn(text)
 		
 	if not done:
-		response["messages"], response["choices"], possible = diagnosers[session_id].ask_qn()
-		
-		if response["messages"] is False: done = True
-		if DEBUG_POSSIBLE_INJURIES:
-			response["messages"].append(["Possible Injuries:"])
-			[response["messages"].append(injury) for injury in possible]
+		try:
+			response["messages"], response["choices"], possible = diagnosers[session_id].ask_qn()
+			if DEBUG_POSSIBLE_INJURIES:
+				response["messages"].append(["Possible Injuries:"])
+				[response["messages"].append(injury) for injury in possible]
+		except:
+			done = True
+
 	if done:
-		possible = diagnosers[session_id].conclude_injury()
-		response["messages"] = ["Possible Injuries:"]
-		[response["messages"].append(injury) for injury in possible]
+		possible = diagnosers[session_id].conclude_injury()[0]
+		number = 0
+		for row in range(len(treatments)):
+			if treatments[row][0] == possible: number = row
+		response["messages"] = ["Your injury is:", possible, "<a href='/information/"+str(number)+"'>Treatment Instruction</a>"]
 		response["choices"] = []
+	response["choices"].sort()
 	return jsonify(response)
 
 @app.route("/identify", methods=["GET", "POST"])
@@ -81,5 +92,16 @@ def identify():
 			upload.save(path.join(app.config['UPLOAD_FOLDER'], upload_name))
 		return render_template("identify.html", upload_name="uploads/"+upload_name)
 
+@app.route("/information/<injury>")
+def information(injury):
+	session_id = get_session_id()
+	try:
+		if session_id is not None:
+			session.pop("id", None)
+			del diagnosers[session_id]
+	except:
+		pass
+	return render_template("information.html", injury=treatments[int(injury)])
+
 if __name__ == "__main__":
-    app.run(debug=True)
+	app.run(debug=True)

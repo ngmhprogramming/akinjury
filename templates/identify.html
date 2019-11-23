@@ -1,13 +1,16 @@
 <html>
 	{% include 'components/head.html' %}
 	<body>
-		<h1>Identify my injury pls</h1>
-		<form id="upload" method="POST" enctype="multipart/form-data">
-			<input type="file" name="file" required><br>
-			<input type="submit" value="&#x2191 Upload">
-		</form>
-		{% if upload_name %}
-		<img src="{{url_for('static', filename=upload_name)}}"/>
-		{% endif %}
+		<div id="identify">
+			<a id="close" href="/">&#x2715</a>
+			<h1>Identify an Injury</h1>
+			<form id="upload" method="POST" enctype="multipart/form-data">
+				<span>Upload an Image: </span><input type="file" name="file" required><br><br>
+				<input type="submit" value="&#x2191 Upload Attatched Image">
+			</form>
+			{% if upload_name %}
+			<img src="{{url_for('static', filename=upload_name)}}"/>
+			{% endif %}
+		</div>
 	</body>
 </html>

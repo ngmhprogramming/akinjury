@@ -1,0 +1,22 @@
+<html>
+	{% include 'components/head.html' %}
+	<body>
+		<div id="treatment">
+			<a id="close" href="/">&#x2715</a>
+			{% if injury %}
+			<h1>Name of Injury</h1>
+			<p>{{ injury[0] }}</p>
+			<h1>Location</h1>
+			<p>{{ injury[1] }}</p>
+			<h1>Symptoms</h1>
+			<p>{{ injury[2] }}</p>
+			<h1>Severity</h1>
+			<p>{{ injury[3] }}</p>
+			<h1>Treatment Overview</h1>
+			<p>{{ injury[4] }}</p>
+			<h1>Specific Treatment</h1>
+			<p>{{ injury[5] }}</p>
+			{% endif %}
+		</div>
+    </body>
+</html>
