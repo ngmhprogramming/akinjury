@@ -104,3 +104,19 @@ body {
 	color: #b80606;
 	background-color: white;
 }
+#treatment {
+	white-space: pre-wrap;
+	background-color: white;
+	border: 8px solid;
+	border-radius: 25px;
+	padding: 7px;
+}
+#treatment h1 {
+	text-decoration: bold underline;
+	margin: 0;
+	padding: 0;
+}
+#treatment p {
+	margin: 0;
+	padding: 0;
+}

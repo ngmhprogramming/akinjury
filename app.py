@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 from os import urandom, path
 from base64 import b64encode
 from chatbot_search import diagnoser
+from csv import reader
 
 app = Flask(__name__)
 app.secret_key = "akinjuryisveryuseful"
@@ -14,6 +15,11 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 diagnosers = {}
 
 DEBUG_POSSIBLE_INJURIES = False
+
+treatments = []
+with open('treatments.csv', newline='') as csvfile:
+    treatments = list(reader(csvfile))
+headers = treatments[0]
 
 def get_session_id():
     if "id" in session: return session["id"]
@@ -60,9 +66,14 @@ def message():
 			response["messages"].append(["Possible Injuries:"])
 			[response["messages"].append(injury) for injury in possible]
 	if done:
-		possible = diagnosers[session_id].conclude_injury()
-		response["messages"] = ["Possible Injuries:"]
-		[response["messages"].append(injury) for injury in possible]
+		possible = diagnosers[session_id].conclude_injury()[0]
+		number = 0
+		for row in range(len(treatments)):
+			if treatments[row][0] == possible:
+				number = row
+		response["messages"] = ["Your injury is:", possible, "<a href='/information/"+str(number)+">Treatment</a>"]
+		#response["messages"] = ["Possible Injuries:"]
+		#[response["messages"].append(injury) for injury in possible]
 		response["choices"] = []
 	return jsonify(response)
 
@@ -77,5 +88,9 @@ def identify():
 			upload.save(path.join(app.config['UPLOAD_FOLDER'], upload_name))
 		return render_template("identify.html", upload_name="uploads/"+upload_name)
 
+@app.route("/information/<injury>")
+def information(injury):
+	return render_template("information.html", injury=treatments[int(injury)])
+
 if __name__ == "__main__":
-    app.run(debug=True)
+	app.run(debug=True)
