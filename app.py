@@ -63,7 +63,7 @@ def message():
 	response["choices"] = []
 
 	if idxs[session_id] > -1 and idxs[session_id] < len(master_options):
-		if len(options) > 1:
+		if len(options[session_id]) > 1:
 			uinput = text
 			if "location" not in items[session_id]:
 				dfs[session_id] = dfs[session_id].loc[dfs[session_id][items[session_id]] == uinput,:]
@@ -72,7 +72,7 @@ def message():
 					dfs[session_id] = dfs[session_id].loc[(dfs[session_id][items[session_id]] == uinput) | (dfs[session_id][items[session_id]] == 'Other area'),:]
 				else:
 					dfs[session_id] = dfs[session_id].loc[dfs[session_id][items[session_id]] == uinput,:]
-			response["messages"].append("Possible injuries"+str(dfs[session_id]['Injury name']))
+			response["messages"].append(str(len(list(dfs[session_id]['Injury name'])))+" possible injuries")
 		if len(dfs[session_id]) == 1: idxs[session_id] = len(master_options)
 	idxs[session_id] += 1
 	if idxs[session_id] < len(master_options):
