@@ -1,3 +1,7 @@
+var sound = true;
+
+function toggle_sound(){ sound = !sound; }
+
 function send(message){
 	//var message = document.getElementById("message").value;
 	//document.getElementById("message").value = "";
@@ -21,8 +25,10 @@ function send(message){
 				bot_div.appendChild(bot);
 				document.getElementById("messages").appendChild(bot_div);
 
-				var speech = new SpeechSynthesisUtterance(response_message);
-				window.speechSynthesis.speak(speech);
+				if(sound){
+					var speech = new SpeechSynthesisUtterance(response_message);
+					window.speechSynthesis.speak(speech);
+				}
 			}
 			var choice_div = document.getElementById("choices");
 			choice_div.innerHTML = "";
