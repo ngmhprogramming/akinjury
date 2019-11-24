@@ -63,6 +63,7 @@ model.compile(loss="categorical_crossentropy",
               metrics=['accuracy'])
 
 model.load_weights('second_try.h5')
+model._make_predict_function()
 impt = (742,978)
 
 def predict(filename):

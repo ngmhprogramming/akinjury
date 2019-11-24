@@ -2,9 +2,9 @@ from flask import Flask, render_template, request, session, redirect, url_for, j
 from werkzeug.utils import secure_filename
 from os import urandom, path
 from base64 import b64encode
-from csv import reader	
+from csv import reader
 from chatbot_search import diagnoser
-from image_predict import predict
+from image_predict import *
 
 app = Flask(__name__)
 app.secret_key = "akinjuryisveryuseful"
@@ -82,14 +82,17 @@ def message():
 @app.route("/identify", methods=["GET", "POST"])
 def identify():
 	if request.method == "GET":
-		print(predict('data/train/contusion/000002.jpg'))
 		return render_template("identify.html")
 	else:
 		upload = request.files["file"]
 		if upload.filename != "" and upload and allowed_file(upload.filename):
 			upload_name = secure_filename(upload.filename)
 			upload.save(path.join(app.config['UPLOAD_FOLDER'], upload_name))
-		return render_template("identify.html", upload_name="uploads/"+upload_name)
+			results = predict("static/uploads/"+upload_name)
+			injury = results[0]
+			confs = results[1]
+			return render_template("identify.html", upload_name="uploads/"+upload_name, injury=injury, confs=confs)
+		return render_template("identify.html")
 
 @app.route("/information/<injury>")
 def information(injury):
