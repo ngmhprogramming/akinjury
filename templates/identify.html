@@ -1,7 +1,7 @@
 <html>
 	{% include 'components/head.html' %}
 	<body>
-		<div id="identify">
+		<div id="identify" style="width: 70vw;margin: auto;padding: 20px;">
 			<a id="close" href="/">&#x2715</a>
 			<h1>Identify an Injury</h1>
 			<form id="upload" method="POST" enctype="multipart/form-data">
@@ -12,7 +12,7 @@
 			<img src="{{url_for('static', filename=upload_name)}}"/>
 			{% endif %}
 			{% if injury %}
-			<h1>Your Injury is: <a href="/information/{{ str(number) }}">{{ injury }}</a></h1>
+			<h1>Your Injury is: <a href="/information/{{ number }}">{{ injury }}</a></h1>
 			{% endif %}
 			{% if confs %}
 				{% for i in range(5) %}

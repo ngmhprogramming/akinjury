@@ -76,3 +76,6 @@ def predict(filename):
     x /= 255
     prediction = model.predict(x)
     return categories[np.argmax(prediction)], prediction.tolist()[0]
+    
+if __name__ == "__main__":
+    print(predict("data/train/nosebleed/000002.jpg"))
