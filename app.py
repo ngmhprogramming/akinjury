@@ -91,7 +91,10 @@ def identify():
 			results = predict("static/uploads/"+upload_name)
 			injury = results[0]
 			confs = results[1]
-			return render_template("identify.html", upload_name="uploads/"+upload_name, injury=injury, confs=confs)
+			number = 0
+			for row in range(len(treatments)):
+				if treatments[row][0] == injury: number = row
+			return render_template("identify.html", upload_name="uploads/"+upload_name, injury=injury, confs=confs, number=number)
 		return render_template("identify.html")
 
 @app.route("/information/<injury>")

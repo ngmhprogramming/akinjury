@@ -12,7 +12,7 @@
 			<img src="{{url_for('static', filename=upload_name)}}"/>
 			{% endif %}
 			{% if injury %}
-			<h1>Your Injury is: {{ injury }}</h1>
+			<h1>Your Injury is: <a href="/information/{{ str(number) }}">{{ injury }}</a></h1>
 			{% endif %}
 			{% if confs %}
 				{% for i in range(5) %}
