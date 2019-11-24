@@ -9,7 +9,7 @@
 				<input type="submit" value="&#x2191 Upload Attatched Image">
 			</form>
 			{% if upload_name %}
-			<img src="{{url_for('static', filename=upload_name)}}"/>
+			<img src="{{url_for('static', filename=upload_name)}}" style="max-width: 90%;" />
 			{% endif %}
 			{% if injury %}
 			<h1>Your Injury is: <a href="/information/{{ number }}">{{ injury }}</a></h1>

@@ -10,7 +10,7 @@ body {
 	);
 }
 #messages {
-	height: 62%;
+	height: 70%;
 	overflow-x: hidden;
 }
 .message {
@@ -113,7 +113,7 @@ body {
 
 }
 #choices button {
-	font-size: 100%;
+	font-size: 150%;
 	width: 47%;
 	padding: 5px;
 	margin: 1%;
@@ -158,6 +158,7 @@ body {
 }
 
 #toggle_sound {
+	text-align: center;
 	vertical-align: middle;
 	font-size: 100%;
 	border: 1px solid grey !important;
