@@ -91,7 +91,6 @@ def identify():
 			results = predict("static/uploads/"+upload_name)
 			injury = results[0]
 			confs = results[1]
-			print(confs)
 			return render_template("identify.html", upload_name="uploads/"+upload_name, injury=injury, confs=confs)
 		return render_template("identify.html")
 
