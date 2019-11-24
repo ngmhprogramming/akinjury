@@ -90,7 +90,7 @@ def identify():
 			upload.save(path.join(app.config['UPLOAD_FOLDER'], upload_name))
 			results = predict("static/uploads/"+upload_name)
 			injury = results[0]
-			confs = results[1]
+			confs = [round(i, 2) for i in results[1]]
 			number = 0
 			for row in range(len(treatments)):
 				if treatments[row][0] == injury: number = row

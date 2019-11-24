@@ -16,7 +16,7 @@
 			{% endif %}
 			{% if confs %}
 				{% for i in range(5) %}
-            	<p class="result">{{ ["Contusion","First Degree Burn","Minor Cut","Nose Bleed", "Snake Bite"][i] }}:
+            	<p class="result">{{ ["Contusion ","Superficial burn","Minor bleeding","Nosebleed", "Snake bites"][i] }}:
 				{{ confs[i]*100.0 }} confidence</p>
 				{% endfor %}
 			{% endif %}

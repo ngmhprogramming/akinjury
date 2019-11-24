@@ -9,7 +9,7 @@ from keras import backend as K
 from PIL import Image
 import numpy as np
 
-categories = ["Contusion","First Degree Burn","Minor Cut","Nose Bleed", "Snake Bite"]
+categories = ["Contusion ","Superficial burn","Minor bleeding","Nosebleed", "Snake bites"]
 img_width, img_height = 978, 742
 train_data_dir = 'data/train'
 validation_data_dir = 'data/test'
