@@ -103,7 +103,7 @@ def information(injury):
 			del diagnosers[session_id]
 	except:
 		pass
-	return render_template("information.html", injury=treatments[int(injury)], number=int(injury))
+	return render_template("information.html", injury=treatments[int(injury)], number=injury))
 
 if __name__ == "__main__":
 	app.run(debug=True)
