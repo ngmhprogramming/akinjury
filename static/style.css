@@ -92,7 +92,7 @@ body {
 	border-radius: 100%;
 	padding: 4px 5.5px;
 	text-decoration: none;
-	margin-right: -25px;
+	margin-right: -20px;
 }
 #text {
 	padding: none;
@@ -113,7 +113,7 @@ body {
 
 }
 #choices button {
-	font-size: 200%;
+	font-size: 100%;
 	width: 47%;
 	padding: 5px;
 	margin: 1%;
@@ -154,5 +154,16 @@ body {
 	font-size: 200%;
 }
 .result {
-	font-size: 200%;
+	font-size: 100%;
 }
+
+#toggle_sound {
+	vertical-align: middle;
+	font-size: 100%;
+	border: 1px solid grey !important;
+	background-color: white;
+	border-radius: 100%;
+	padding: 3px;
+	margin-right: -30px;
+}
+

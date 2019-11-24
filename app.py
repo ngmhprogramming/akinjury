@@ -90,11 +90,14 @@ def identify():
 			upload.save(path.join(app.config['UPLOAD_FOLDER'], upload_name))
 			results = predict("static/uploads/"+upload_name)
 			injury = results[0]
-			confs = [round(i, 2) for i in results[1]]
+			possible = ["Contusion ","Superficial burn","Minor bleeding","Nosebleed", "Snake bites"]
 			number = 0
+			for i in range(len(possible)):
+				if injury == possible[i]: number = i
+			conf = int(round(results[1][number], 2)*100)
 			for row in range(len(treatments)):
 				if treatments[row][0] == injury: number = row
-			return render_template("identify.html", upload_name="uploads/"+upload_name, injury=injury, confs=confs, number=number)
+			return render_template("identify.html", upload_name="uploads/"+upload_name, injury=injury, conf=conf, number=number)
 		return render_template("identify.html")
 
 @app.route("/information/<injury>")

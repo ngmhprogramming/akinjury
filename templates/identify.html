@@ -14,11 +14,8 @@
 			{% if injury %}
 			<h1>Your Injury is: <a href="/information/{{ number }}">{{ injury }}</a></h1>
 			{% endif %}
-			{% if confs %}
-				{% for i in range(5) %}
-            	<p class="result">{{ ["Contusion ","Superficial burn","Minor bleeding","Nosebleed", "Snake bites"][i] }}:
-				{{ confs[i]*100.0 }} confidence</p>
-				{% endfor %}
+			{% if conf %}
+				<p class="result">with {{ conf }}% confidence</p>
 			{% endif %}
 		</div>
 	</body>
