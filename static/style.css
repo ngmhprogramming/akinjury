@@ -84,14 +84,15 @@ body {
 #menu form input {
 	float: right;
 	vertical-align: middle;
-	font-size: 200%;
+	font-size: 80%;
 	font-weight: bold;
 	background-color: red;
 	color: white;
 	border: none;
-	border-radius: 50%;
-	padding: 5px;
+	border-radius: 100%;
+	padding: 4px 5.5px;
 	text-decoration: none;
+	margin-right: -25px;
 }
 #text {
 	padding: none;
@@ -147,8 +148,8 @@ body {
 	float: right;
 	background-color: red;
 	color: white;
-	border-radius: 50%;
-	padding: 5px;
+	border-radius: 100%;
+	padding: 4px 5.5px;
 	text-decoration: none;
 	font-size: 200%;
 }
